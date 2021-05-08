@@ -8,7 +8,7 @@ public class UiController : MonoBehaviour
 {
     #region vars
 
-    public PlayerMovement movement;
+    public PlayerCamera cam;
 
     private bool isMouseShown;
 
@@ -22,7 +22,7 @@ public class UiController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isMouseShown)
             {
@@ -44,7 +44,7 @@ public class UiController : MonoBehaviour
 
     public void UpdateSettings()
     {
-        movement.sensitivity = mouseSensitivitySlider.value;
+        cam.sensitivity = mouseSensitivitySlider.value;
     }
 
     public void ShowSettings()
