@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameCollider : MonoBehaviour
+public class DeathFloor : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {

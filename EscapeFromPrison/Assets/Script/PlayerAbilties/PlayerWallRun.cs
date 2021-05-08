@@ -12,6 +12,9 @@ public class PlayerWallRun : MonoBehaviour
 
     public float wallRunGravity = 5f;
     public float wallJumpForce = 550f;
+
+    public float wallStickForce = 50f;
+    public float wallStickTime = 5f;
     
     bool wallLeft = false;
     bool wallRight = false;
@@ -43,12 +46,10 @@ public class PlayerWallRun : MonoBehaviour
             if (wallLeft)
             {
                 StartWallRun();
-                Debug.Log("Wall on the left");
             }
             else if (wallRight)
             {
                 StartWallRun();
-                Debug.Log("Wall on the right");
             }
             else
             {
@@ -79,14 +80,18 @@ public class PlayerWallRun : MonoBehaviour
         rb.AddForce(Vector3.down * wallRunGravity, ForceMode.Force);
 
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, wallRunFov, wallRunFovTime * Time.deltaTime);
+
+        rb.velocity = new Vector3(rb.velocity.x, Mathf.Lerp(rb.velocity.y, 0f, wallStickTime * Time.deltaTime), rb.velocity.z);
         
         if(wallLeft)
         {
             tilt = Mathf.Lerp(tilt, -camTilt, camTiltTime * Time.deltaTime);
+            rb.AddForce(-orientation.right * wallStickForce, ForceMode.Force);
         }
         else if (wallRight)
         {
             tilt = Mathf.Lerp(tilt, camTilt, camTiltTime * Time.deltaTime);
+            rb.AddForce(orientation.right * wallStickForce, ForceMode.Force);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
