@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [HideInInspector] public bool jump, sprint, crouch, crouchDown, crouchUp;
+    [HideInInspector] public bool jump, sprint, crouch, crouchDown, crouchUp, attack, attackStand;
     [HideInInspector] public float x, y;
 
     private void Update()
@@ -15,5 +15,8 @@ public class PlayerInput : MonoBehaviour
         crouch = Input.GetKey(KeyCode.LeftControl);
         crouchDown = Input.GetKeyDown(KeyCode.LeftControl);
         crouchUp = Input.GetKeyUp(KeyCode.LeftControl);
+
+        attack = Input.GetMouseButton(0);
+        attackStand = Input.GetMouseButtonDown(0);
     }
 }

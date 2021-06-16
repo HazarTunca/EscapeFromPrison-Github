@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour {
     #region vars
 
     // Requirements
+    [SerializeField] private Transform orientation;
     private PlayerInput inputs;
-    private PlayerCamera cam;
     private PlayerCollisionDetections col;
     private PlayerFriction friction;
 
@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody>();
         inputs = GetComponent<PlayerInput>();
-        cam = GetComponent<PlayerCamera>();
         col = GetComponent<PlayerCollisionDetections>();
         friction = GetComponent<PlayerFriction>();
     }
@@ -107,8 +106,8 @@ public class PlayerMovement : MonoBehaviour {
         if (col.grounded && inputs.crouch) multiplierV = 0f;
 
         //Apply forces to move player
-        rb.AddForce(cam.orientation.transform.forward * inputs.y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(cam.orientation.transform.right * inputs.x * moveSpeed * Time.deltaTime * multiplier);
+        rb.AddForce(orientation.transform.forward * inputs.y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
+        rb.AddForce(orientation.transform.right * inputs.x * moveSpeed * Time.deltaTime * multiplier);
     }
 
     private void StartCrouch() {
@@ -116,7 +115,7 @@ public class PlayerMovement : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         if (rb.velocity.magnitude > 0.5f) {
             if (col.grounded) {
-                rb.AddForce(cam.orientation.transform.forward * slideForce);
+                rb.AddForce(orientation.transform.forward * slideForce);
             }
         }
     }

@@ -8,18 +8,12 @@ public class PlayerCollisionDetections : MonoBehaviour
 
     [Header("IsGrounded")]
     public bool grounded;
-    public LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsGround;
 
-    public float maxSlopeAngle = 35f;
-    public Vector3 normalVector = Vector3.up;
+    [SerializeField] private float maxSlopeAngle = 35f;
+    [SerializeField] private Vector3 normalVector = Vector3.up;
 
     private bool cancellingGrounded;
-
-    [Header("WallRun")]
-    public bool canWallRun;
-    public LayerMask whatIsWall;
-
-    private bool cancelWallRun;
 
     #endregion
 

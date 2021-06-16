@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerWallRun : MonoBehaviour
 {
     private Rigidbody rb;
-    public Transform orientation;
+    [SerializeField] private Transform orientation;
 
-    public float wallDistance = 0.5f;
-    public float minimumJumpHeight = 1.5f;
+    [SerializeField] private float wallDistance = 0.5f;
+    [SerializeField] private float minimumJumpHeight = 1.5f;
 
-    public float wallRunGravity = 5f;
-    public float wallJumpForce = 550f;
+    [SerializeField] private float wallRunGravity = 5f;
+    [SerializeField] private float wallJumpForce = 550f;
 
-    public float wallStickForce = 50f;
-    public float wallStickTime = 5f;
+    [SerializeField] private float wallStickForce = 50f;
+    [SerializeField] private float wallStickTime = 5f;
     
     bool wallLeft = false;
     bool wallRight = false;
@@ -23,12 +23,12 @@ public class PlayerWallRun : MonoBehaviour
     RaycastHit rightWallHit;
 
     [Header("Camera Tilt")]
-    public Camera cam;
-    public float fov;
-    public float wallRunFov;
-    public float wallRunFovTime;
-    public float camTilt;
-    public float camTiltTime;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float fov;
+    [SerializeField] private float wallRunFov;
+    [SerializeField] private float wallRunFovTime;
+    [SerializeField] private float camTilt;
+    [SerializeField] private float camTiltTime;
 
     public float tilt { get; private set; }
 

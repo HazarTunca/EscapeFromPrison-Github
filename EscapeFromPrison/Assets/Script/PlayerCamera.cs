@@ -7,16 +7,16 @@ public class PlayerCamera : MonoBehaviour
     #region vars
 
     [Header("Requiements")]
-    public Transform playerCam;
-    public Transform orientation;
-    public PlayerWallRun wallRun;
+    [SerializeField] private Transform playerCam;
+    [SerializeField] private Transform orientation;
+    [SerializeField] private PlayerWallRun wallRun;
 
     [Header("Sensitivity")]
     public float sensitivity = 50f;
 
-    private float xRotation;
-    private float sensMultiplier = 1f;
-    private float desiredX;
+    [SerializeField] private float xRotation;
+    [SerializeField] private float sensMultiplier = 1f;
+    [SerializeField] private float desiredX;
 
     #endregion
 

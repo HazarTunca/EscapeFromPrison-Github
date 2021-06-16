@@ -8,13 +8,13 @@ public class UiController : MonoBehaviour
 {
     #region vars
 
-    public PlayerCamera cam;
+    [SerializeField] private PlayerCamera cam;
 
     private bool isMouseShown;
 
-    public GameObject settingsUi;
-    public Slider mouseSensitivitySlider;
-    public TMP_Text sensitivityText;
+    [SerializeField] private GameObject settingsUi;
+    [SerializeField] private Slider mouseSensitivitySlider;
+    [SerializeField] private TMP_Text sensitivityText;
 
     private bool isSettingsOpen;
 
